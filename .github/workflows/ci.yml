@@ -34,16 +34,6 @@ jobs:
         with:
           name: Package
           path: my-site-back/target/*.jar
-  build-front:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Use Node
-        uses: actions/
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Build front
-        run: cd my-site-front && 
   
   test-back:
     needs: build-back
