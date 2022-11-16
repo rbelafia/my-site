@@ -30,10 +30,32 @@ jobs:
           DB_PASSWORD: dbpass
           DB_URL: jdbc:postgresql://db:5432/articles
         run: cd my-site-back && mvn clean package -Dmaven.test.skip=true
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: Package
           path: my-site-back/target/*.jar
+
+  build-front:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Use Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Install dependencies
+        run: cd my-site-front && npm ci
+      - name: Build front
+        run: cd my-site-front && npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Front
+          path: my-site-front/dist/my-site-front
   
   test-back:
     needs: build-back
@@ -65,7 +87,8 @@ jobs:
           DB_PASSWORD: dbpass
           DB_URL: jdbc:postgresql://db:5432/articles
         run: cd my-site-back && mvn test
-      - uses: actions/upload-artifact@v3
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: Test
           path: my-site-back/target/surefire-reports
