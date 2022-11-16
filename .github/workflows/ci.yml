@@ -3,7 +3,6 @@ on: [push]
 jobs:
   build-back:
     runs-on: ubuntu-latest
-    container: maven:3.8.1-openjdk-17-slim
 
     services:
       db:
@@ -24,6 +23,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: maven
       - name: Build with Maven
         env:
           DB_USERNAME: dbuser
@@ -46,9 +51,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
       - name: Install dependencies
-        run: cd my-site-front && npm ci
+        run: cd my-site-front && npm i
       - name: Build front
         run: cd my-site-front && npm run build
       - name: Upload artifacts
@@ -58,9 +62,8 @@ jobs:
           path: my-site-front/dist/my-site-front
   
   test-back:
-    needs: build-back
+    needs: [build-back, build-front]
     runs-on: ubuntu-latest
-    container: maven:3.8.1-openjdk-17-slim
 
     services:
       db:
@@ -81,6 +84,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          cache: maven
       - name: Test with Maven
         env:
           DB_USERNAME: dbuser
