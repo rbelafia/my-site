@@ -1,0 +1,119 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0;
+}
+
+p {
+  margin: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  height: 5em;
+  padding-left: 2em;
+  display: flex;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+}
+
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+}
+
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+.about {
+  text-align: left;
+  margin-bottom: 2em;
+}
+
+.publication-container {
+  display: flex;
+  flex-direction: column;
+  width: available;
+}
+
+.publication {
+  padding-left: 2em;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  border-bottom: gray 1px solid ;
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+
+.publication:first-child {
+  border-top: gray 1px solid ;
+}
+
+.about-publication-title {
+  margin-bottom: 1em;
+}
+
+.publication-authors {
+  display: flex;
+  flex-direction: row;
+}
+
+.publication-description {
+  font-style: italic;
+}
+
+.author {
+  margin-right: 0.2em;
+  color: var(--accent-color);
+}
+
+.author-last {
+  font-weight: bold;
+}
+
+.about-publication {
+  text-align: left;
+  width: 100%;
+}
+
+.publication-right {
+  text-align: center;
+  writing-mode: vertical-lr;
+}
+
+.publication-year {
+  font-size: 2em;
+  font-weight: lighter;
+  color: gray;
+}

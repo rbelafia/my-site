@@ -1,0 +1,36 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+}
+
+"Indicates a Bean Validation constraint"
+directive @constraint(format: String, max: BigInteger, maxFloat: BigDecimal, maxLength: Int, min: BigInteger, minFloat: BigDecimal, minLength: Int, pattern: String) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+type Article {
+    authors: [Author]
+    description: String
+    id: BigInteger
+    name: String
+    year: Int
+}
+
+type Author {
+    firstName: String
+    id: BigInteger
+    lastName: String
+}
+
+"Query root"
+type Query {
+    "Return all articles"
+    articles: [Article]
+    "Return all authors"
+    authors: [Author]
+}
+
+"Scalar for BigDecimal"
+scalar BigDecimal
+
+"Scalar for BigInteger"
+scalar BigInteger
