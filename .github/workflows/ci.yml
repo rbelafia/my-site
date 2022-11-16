@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build-back:
     runs-on: ubuntu-latest
-    container: maven:3.8.1-jdk-11-slim
+    container: maven:3.8.1-openjdk-17-slim
 
     services:
       db:
