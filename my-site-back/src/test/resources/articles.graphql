@@ -1,0 +1,9 @@
+articles {
+    name
+    description
+    authors {
+        firstName
+        lastName
+    }
+    year
+}
