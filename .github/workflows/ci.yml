@@ -36,6 +36,7 @@ jobs:
           name: Package
           path: my-site-back/target/*.jar
   test-back:
+    needs: build-back
     runs-on: ubuntu-latest
     container: maven:3.8.1-openjdk-17-slim
 
