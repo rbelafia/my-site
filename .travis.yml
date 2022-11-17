@@ -19,6 +19,6 @@ jobs:
       - psql -c "create database articles;" -U postgres
       - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
       script:
-      - mvn --batch-mode test
+      - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
       
 
