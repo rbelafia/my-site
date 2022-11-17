@@ -8,7 +8,7 @@ task:
     image: maven:3.8.1-openjdk-17-slim
     additional_containers:
       - name: db
-        image: postgresql
+        image: postgres
         env:
           POSTGRES_USER: dbuser
           POSTGRES_PASSWORD: dbpass
