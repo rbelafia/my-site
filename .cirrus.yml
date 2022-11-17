@@ -20,3 +20,5 @@ task:
   always:
     junit_artifacts:
       path: "my-site-back/target/surefire-reports/TEST-*.xml"
+      type: text/xml
+      format: junit
