@@ -12,7 +12,7 @@ env:
     - POSTGRES_USER=user
     - POSTGRES_PASSWORD=pass
     - POSTGRES_DB=articles
-    - DB_URL=jdbc:postgresql://localhost:5432/articles
+    - DB_URL=jdbc:postgresql://127.0.0.1/articles
 
 script: cd my-site-back && mvn test
       
