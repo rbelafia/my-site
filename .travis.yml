@@ -1,0 +1,17 @@
+language: java
+
+services:
+  - postgresql
+
+env:
+  global:
+    # A different port must be used when not using the
+    # default PostgreSQL:
+    - POSTGRES_USER=user
+    - POSTGRES_PASSWORD=pass
+    - POSTGRES_DB=articles
+    - DB_URL=jdbc:postgresql://localhost:5432/articles
+
+script: cd my-site-back && mvn test
+      
+
