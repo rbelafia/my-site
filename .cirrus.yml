@@ -15,5 +15,6 @@ task:
           POSTGRES_DB: articles
         port: 5432
   test-script:
+    - docker network inspect bridge --format='{{ (index .IPAM.Config 0).Gateway}}'
     - cd my-site-back
     - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
