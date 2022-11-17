@@ -1,0 +1,19 @@
+task:
+  name: "Test-back"
+  env:
+    DB_USERNAME: dbuser
+    DB_PASSWORD: dbpass
+    DB_URL: "jdbc:postgresql://db:5432/articles"
+  container:
+    image: maven:3.8.1-openjdk-17-slim
+    additional_containers:
+      - name: db
+        image: postgresql
+        env:
+          POSTGRES_USER: dbuser
+          POSTGRES_PASSWORD: dbpass
+          POSTGRES_DB: articles
+        port: 5432
+  test-script:
+    - cd my-site-back
+    - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
