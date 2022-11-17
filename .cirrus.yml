@@ -3,7 +3,7 @@ task:
   env:
     DB_USERNAME: dbuser
     DB_PASSWORD: dbpass
-    DB_URL: "jdbc:postgresql://db:5432/articles"
+    DB_URL: "jdbc:postgresql://postgres:5432/articles"
   container:
     image: maven:3.8.1-openjdk-17-slim
     additional_containers:
@@ -15,6 +15,5 @@ task:
           POSTGRES_DB: articles
         port: 5432
   test-script:
-    - docker network inspect bridge --format='{{ (index .IPAM.Config 0).Gateway}}'
     - cd my-site-back
     - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
