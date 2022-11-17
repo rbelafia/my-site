@@ -19,5 +19,6 @@ task:
     - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
   always:
     junit_result_artifacts:
-      path: "my-site-back/target/surefire-reports/TEST-*.xml"
+      path: "my-site-back/target/surefire-reports/TEST-org.belafia.SiteResourceTest.xml"
+      type: text/xml
       format: junit
