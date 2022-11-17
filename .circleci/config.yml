@@ -29,6 +29,8 @@ jobs:
       - run:
           name: "Test back"
           command: "cd my-site-back && mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
+      - store_test_results:
+          path: "my-site-back/target/surefire-reports"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
