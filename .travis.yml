@@ -1,3 +1,4 @@
+sudo: enabled
 language: java
 
 jdk: openjdk-17
@@ -5,15 +6,20 @@ jdk: openjdk-17
 services:
   - postgresql
 
-env:
-  global:
-    # A different port must be used when not using the
-    # default PostgreSQL:
-    - POSTGRES_USER=user
-    - POSTGRES_PASSWORD=pass
-    - POSTGRES_DB=articles
-    - DB_URL=jdbc:postgresql://127.0.0.1/articles
-
-script: cd my-site-back && mvn test
+jobs:
+  include:
+    - language: java
+      jdk: openjdk-17
+      env:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_URL=jdbc:postgresql://127.0.0.1/articles
+      before_script:
+      - cd my-site-back
+      - psql -c "create database articles;" -U postgres
+      - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
+      script:
+      - cd my-site-back
+      - mvn test
       
 
