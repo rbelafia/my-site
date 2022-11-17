@@ -6,6 +6,10 @@ task:
     DB_URL: "jdbc:postgresql://postgres:5432/articles"
   container:
     image: maven:3.8.1-openjdk-17-slim
+    env:
+      DB_USERNAME: "dbuser"
+      DB_PASSWORD: "dbpass"
+      DB_URL: "jdbc:postgresql://postgres:5432/articles"
     additional_containers:
       - name: postgres
         image: postgres
