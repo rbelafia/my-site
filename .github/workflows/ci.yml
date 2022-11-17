@@ -73,6 +73,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: front
+      - name: Ls
+        run: |
+          ls
+          ls my-site-front
       - name: Move front to resources
         run: cp -a front/. my-site-back/src/main/resources/META-INF/resources
       - name: Build with Maven
