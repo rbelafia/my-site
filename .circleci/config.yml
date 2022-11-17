@@ -30,7 +30,7 @@ jobs:
           name: "Test back"
           command: |
             cd my-site-back
-            mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
+            mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
       - run:
           name: Save test results
           command: |
