@@ -19,7 +19,6 @@ jobs:
       - psql -c "create database articles;" -U postgres
       - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
       script:
-      - cd my-site-back
       - mvn test
       
 
