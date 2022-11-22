@@ -4,6 +4,11 @@ image: Ubuntu2004
 
 stack: jdk 17, postgresql
 
+cache:
+  - "$HOME/.cache"
+  - "$HOME/.m2/repository"
+  - "$HOME/.m2/wrapper"
+
 environment:
   # these variables are common to all jobs
   PGUSER: postgres
@@ -19,6 +24,11 @@ install:
       if [[ -d /usr/lib/jvm/java-17-openjdk-amd64 ]]; then sudo ln -s /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk; fi;
       export JAVA_HOME="/usr/lib/jvm/java-17-openjdk";
       export PATH="$JAVA_HOME:$PATH";
+  - sh: |
+      if [[ -z "${MAVEN_OPTS}" ]]; then export MAVEN_OPTS="-Dmaven.repo.local=.m2/repository -Dprofile=title -DprofileFormat=JSON,HTML"; fi;
+      if [[ -d ${HOME}/.m2 ]]; then rm -rf ${HOME}/.m2/repository/top/infra/maven; ls -ahl ${HOME}/.m2; fi;
+      export MAVEN_USER_HOME="${PWD}/.m2";
+      ./mvnw ${MAVEN_GLOBAL_SETTINGS} -version;
 
 test_script:
   - cd my-site-back
