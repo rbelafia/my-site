@@ -16,8 +16,10 @@ environment:
   DB_PASSWORD: "Password12!"
   DB_URL: "jdbc:postgresql://localhost:5432/articles"
 
-install:
+init:
   - sudo sed -i -E -e 's/(local\s+all\s+postgres\s+)peer/\1trust/' /etc/postgresql/15/main/pg_hba.conf
+
+install:
   - sh: |
       if [[ -d /usr/lib/jvm/java-17-openjdk-amd64 ]]; then sudo ln -s /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk; fi;
       export JAVA_HOME="/usr/lib/jvm/java-17-openjdk";
