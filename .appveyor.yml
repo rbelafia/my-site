@@ -7,6 +7,7 @@ stack: jdk openjdk-17, postgresql
 environment:
   # these variables are common to all jobs
   PGUSER: postgres
+  POSTGRES_USER: postgres
   DB_USERNAME: postgres
   DB_PASSWORD: postgres
   DB_URL: "jdbc:postgresql://127.0.0.1/articles"
