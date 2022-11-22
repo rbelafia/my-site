@@ -10,7 +10,6 @@ cache:
   - "$HOME/.m2/wrapper"
 
 environment:
-  # these variables are common to all jobs
   POSTGRES_DB: "articles"
   DB_USERNAME: postgres
   DB_PASSWORD: "Password12!"
