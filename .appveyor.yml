@@ -30,6 +30,7 @@ install:
       export MAVEN_USER_HOME="${PWD}/.m2";
       cd my-site-back;
       ./mvnw ${MAVEN_GLOBAL_SETTINGS} -version;
+      mvn -version
 
 test_script:
   - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
