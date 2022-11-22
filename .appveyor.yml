@@ -1,5 +1,9 @@
 version: '1.0.{build}'
 
+image: Ubuntu2004
+
+stack: jdk openjdk-17
+
 environment:
   # these variables are common to all jobs
   PGUSER: postgres
@@ -16,5 +20,3 @@ test_script:
   - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
   - cd my-site-back
   - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
-
-image: maven:3.8.1-openjdk-17-slim
