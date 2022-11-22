@@ -2,7 +2,7 @@ version: '1.0.{build}'
 
 image: Ubuntu2004
 
-stack: jdk openjdk-17
+stack: jdk openjdk-17, postgresql
 
 environment:
   # these variables are common to all jobs
@@ -11,10 +11,6 @@ environment:
   DB_PASSWORD: postgres
   DB_URL: "jdbc:postgresql://127.0.0.1/articles"
 
-services:
-  - postgresql
-init:
-  - sudo sed -i -E -e 's/(local\s+all\s+postgres\s+)peer/\1trust/' /etc/postgresql/14/main/pg_hba.conf
 test_script:
   - psql -U postgres -c 'create database articles;'
   - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
