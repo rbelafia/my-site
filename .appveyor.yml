@@ -11,12 +11,9 @@ cache:
 
 environment:
   # these variables are common to all jobs
-  PGUSER: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
   POSTGRES_DB: "articles"
   DB_USERNAME: postgres
-  DB_PASSWORD: postgres
+  DB_PASSWORD: "Password12!"
   DB_URL: "jdbc:postgresql://localhost:5432/articles"
 
 install:
@@ -31,6 +28,11 @@ install:
       cd my-site-back;
       ./mvnw ${MAVEN_GLOBAL_SETTINGS} -version;
       mvn -version
+  - sh: |
+      export PGUSER=postgres
+      export PGPASSWORD=Password12!
+      export PATH:"/usr/bin/postgres:$PATH" 
+      
 
 test_script:
   - psql -U postgres -c "create database articles;"
