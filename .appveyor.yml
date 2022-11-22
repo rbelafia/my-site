@@ -32,7 +32,6 @@ install:
       ./mvnw ${MAVEN_GLOBAL_SETTINGS} -version;
 
 test_script:
-  - cd my-site-back
   - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
 
 build: off
