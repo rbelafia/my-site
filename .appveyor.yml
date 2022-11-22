@@ -39,7 +39,7 @@ install:
       export PATH="/usr/lib/postgresql/15/bin/postgres:$PATH"
       
 
-test_script:
+test:
   - ps -ef | grep postgres
   - createdb articles
   - ./mvnw -B ${MAVEN_GLOBAL_SETTINGS} test
