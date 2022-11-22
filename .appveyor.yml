@@ -30,7 +30,9 @@ install:
       mvn -version
   - sh: |
       export PGUSER=postgres
-      export PGPASSWORD=Password12!
+      export POSTGRES_USER=postgres
+      export PGPASSWORD="Password12!"
+      export POSTGRES_PASSWORD="Password12!"
       export PATH="/usr/bin/postgres:$PATH"
       createdb articles
       
