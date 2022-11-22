@@ -33,12 +33,12 @@ install:
       export POSTGRES_USER=postgres
       export PGPASSWORD="Password12!"
       export POSTGRES_PASSWORD="Password12!"
-      export PATH="/usr/bin/postgres:$PATH"
+      export PATH="/usr/lib/postgresql/15/bin/postgres:$PATH"
       
 
 test_script:
   - ps -ef | grep postgres
-  - psql -U postgres -c "create database articles;"
+  - createdb articles
   - ./mvnw -B ${MAVEN_GLOBAL_SETTINGS} test
 
 build: off
