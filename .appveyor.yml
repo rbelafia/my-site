@@ -8,12 +8,12 @@ environment:
   # these variables are common to all jobs
   PGUSER: postgres
   POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: "articles"
   DB_USERNAME: postgres
   DB_PASSWORD: postgres
-  DB_URL: "jdbc:postgresql://127.0.0.1/articles"
+  DB_URL: "jdbc:postgresql://localhost:5432/articles"
 
 test_script:
-  - psql -U postgres -c 'create database articles;'
-  - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'"
   - cd my-site-back
   - mvn test -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
