@@ -32,6 +32,7 @@ install:
       export PGUSER=postgres
       export PGPASSWORD=Password12!
       export PATH="/usr/bin/postgres:$PATH"
+      createdb articles
       
 
 test_script:
