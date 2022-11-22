@@ -47,5 +47,7 @@ test_script:
 build: off
 
 on_finish:
+  - find . -type f -regex ".*/target/surefire-reports/.*xml"
+  - find "$APPVEYOR_BUILD_FOLDER" -type f -regex '.*/target/surefire-reports/.*xml'
   - sh: |
-      find "$APPVEYOR_BUILD_FOLDER" -type f -name '.*/target/surefire-reports/.*xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
+      find "$APPVEYOR_BUILD_FOLDER" -type f -regex '.*/target/surefire-reports/.*xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"
