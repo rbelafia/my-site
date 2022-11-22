@@ -38,6 +38,7 @@ install:
       
 
 test_script:
+  - ps -ef | grep postgres
   - psql -U postgres -c "create database articles;"
   - ./mvnw -B ${MAVEN_GLOBAL_SETTINGS} test
 
