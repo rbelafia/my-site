@@ -33,6 +33,7 @@ install:
       mvn -version
 
 test_script:
+  - psql -U postgres -c "create database articles;"
   - ./mvnw -B ${MAVEN_GLOBAL_SETTINGS} test
 
 build: off
