@@ -2,7 +2,7 @@ version: '1.0.{build}'
 
 image: Ubuntu2004
 
-stack: jdk 18, postgresql
+stack: jdk 17, postgresql
 
 environment:
   # these variables are common to all jobs
