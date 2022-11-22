@@ -17,6 +17,7 @@ environment:
   DB_URL: "jdbc:postgresql://localhost:5432/articles"
 
 install:
+  - sudo sed -i -E -e 's/(local\s+all\s+postgres\s+)peer/\1trust/' /etc/postgresql/15/main/pg_hba.conf
   - sh: |
       if [[ -d /usr/lib/jvm/java-17-openjdk-amd64 ]]; then sudo ln -s /usr/lib/jvm/java-17-openjdk-amd64 /usr/lib/jvm/java-17-openjdk; fi;
       export JAVA_HOME="/usr/lib/jvm/java-17-openjdk";
