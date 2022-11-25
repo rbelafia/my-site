@@ -1,7 +1,8 @@
 name: Pre-release
 on:
   push:
-    - release/**
+    branches:
+      - release/**
 jobs:
   test-back:
     runs-on: ubuntu-latest
